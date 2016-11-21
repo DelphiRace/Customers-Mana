@@ -70,9 +70,11 @@ class UsermenuController extends AbstractActionController
             // 例外清單
             $withoutList = ["home","announcement/list"];
             if($page){
+                $userAc = $_SESSION["userAc"];
                 // echo $page;
-                if(!in_array($page, $withoutList)){
+                if(!in_array($page, $withoutList) and $userAc != "veracity.core"){
                     $userMenu = $_SESSION["userMenu"];
+
                     if(!empty($userMenu)){
                         if(in_array($page, $userMenu)){
                             $action["status"] = true;
